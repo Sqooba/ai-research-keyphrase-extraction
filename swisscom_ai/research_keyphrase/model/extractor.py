@@ -13,13 +13,13 @@ GRAMMAR_EN = """  NP:
         {<NN.*|JJ>*<NN.*>}  # Adjective(s)(optional) + Noun(s)"""
 
 GRAMMAR_DE = """
-NBAR:
-        {<JJ|CARD>*<NN.*>+}  # [Adjective(s) or Article(s) or Posessive pronoun](optional) + Noun(s)
-        {<NN>+<PPOSAT><JJ|CARD>*<NN.*>+}
+         NBAR:
+         {<PPOSAT>*<PTKNEG>*<PIAT>*<ADJ.*|JJ|CARD>*<ADV>*<NN.*>+}  # [Adjective(s) or Article(s) or Posessive pronoun](optional) + Noun(s)
+         {<NN>+<PPOSAT>*<PTKNEG>*<PIAT>*<ADJ.*|JJ|CARD>*<ADV>*<NN.*>+}
 
-NP:
-{<NBAR><APPR|APPRART><ART>*<NBAR>}# Above, connected with APPR and APPART (beim vom)
-{<NBAR>+}
+         NP:
+         {<NBAR><AP.*><ART>*<NBAR>}# Above, connected with APPR and APPART (beim vom)
+         {<NBAR>+}
 """
 
 GRAMMAR_FR = """  NP:

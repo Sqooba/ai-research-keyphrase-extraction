@@ -9,7 +9,7 @@ from nltk.stem import PorterStemmer
 class InputTextObj:
     """Represent the input text in which we want to extract keyphrases"""
 
-    def __init__(self, pos_tagged, lang, stem=False, min_word_len=3):
+    def __init__(self, pos_tagged, lang, stem=False, min_word_len=1):
         """
         :param pos_tagged: List of list : Text pos_tagged as a list of sentences
         where each sentence is a list of tuple (word, TAG).
@@ -39,11 +39,7 @@ class InputTextObj:
             temp.append(s)
 
         self.pos_tagged = temp
-        # Convert some language-specific tag (NC, NE to NN) or ADJA ->JJ see convert method.
-        if lang in ['fr', 'de']:
-            self.pos_tagged = [[(tagged_token[0], convert(tagged_token[1])) for tagged_token in sentence] for sentence
-                               in
-                               self.pos_tagged]
+
         self.filtered_pos_tagged = [[(t[0].lower(), t[1]) for t in sent if self.is_candidate(t)] for sent in
                                     self.pos_tagged]
 
@@ -62,7 +58,7 @@ class InputTextObj:
         return {tagged_token[0].lower()
                 for sentence in self.pos_tagged
                 for tagged_token in sentence
-                if self.is_candidate(tagged_token) and len(tagged_token[0]) >= self.min_word_len
+                if len(tagged_token[0]) >= self.min_word_len
                 }
 
 
