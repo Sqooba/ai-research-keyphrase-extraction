@@ -22,8 +22,18 @@ GRAMMAR_DE = """
          {<NBAR>+}
 """
 
-GRAMMAR_FR = """  NP:
-        {<NN.*|JJ>*<NN.*>+<JJ>*}  # Adjective(s)(optional) + Noun(s) + Adjective(s)(optional)"""
+GRAMMAR_FR = """  
+        MNOM:
+        {<N.*><ADV>*<ADJ>} # Noun + adv (optional) + adjective (feedback constructif)
+        MADJ:
+        {<ADV>*<ADJ>} # adv (optional) + adjective (tres bonnes)
+        NP:
+        {<MNOM><MADJ>*} # MNOM combined with MADJ (optional)
+        {<VINF><ADV>*<DET><N.*>} # inf verb + adv (optional) + det + noun (faire de tests)
+        {<ADV><P><VINF|N.*>+} # adv + prep + noum or vinf (pas de panne)
+        {<N.*><P><N.*>} # noun + prep + noun
+        {<MADJ>*<DET>*<N.*>} # MADJ (optional) + det (optional) + noun (differentes technologies)
+        """
 
 
 def get_grammar(lang):
