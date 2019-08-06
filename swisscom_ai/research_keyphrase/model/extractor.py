@@ -14,11 +14,11 @@ GRAMMAR_EN = """  NP:
 
 GRAMMAR_DE = """
          NBAR:
-         {<PPOSAT>*<PTKNEG>*<PIAT>*<ADJ.*|JJ|CARD>*<ADV>*<NN.*>+}  # [Adjective(s) or Article(s) or Posessive pronoun](optional) + Noun(s)
-         {<NN>+<PPOSAT>*<PTKNEG>*<PIAT>*<ADJ.*|JJ|CARD>*<ADV>*<NN.*>+}
+         {<PPOSAT>*<PTKNEG>*<PIAT>*<ADJ.*|CARD>*<ADV>*<NN.*>+}  # [possessive determiner(s) or negative particle(s) or indefinite determiner or adjective or adv](optional) + Noun(s)
+         {<NN>+<PPOSAT>*<PTKNEG>*<PIAT>*<ADJ.*|JJ|CARD>*<ADV>*<NN.*>+} # [Noun] + possessive determiner(s) or negative particle(s) or indefinite determiner or adjective or adv](optional) + [Noum]
 
          NP:
-         {<NBAR><AP.*><ART>*<NBAR>}# Above, connected with APPR and APPART (beim vom)
+         {<NBAR><AP.*><ART>*<NBAR>}# Above, connected with prepositions and article (beim vom)
          {<NBAR>+}
 """
 
