@@ -16,7 +16,12 @@ class InputTextObj:
         :param stem: If we want to apply stemming on the text.
         """
         self.min_word_len = min_word_len
-        self.considered_tags = {'NN', 'NNS', 'NNP', 'NNPS', 'JJ'}
+        if lang == "en":
+            self.considered_tags = {'NN', 'NNS', 'NNP', 'NNPS', 'JJ'}
+        elif lang == "fr":
+            self.considered_tags = {'NN', 'NNS', 'NNP', 'NNPS','NNE', 'NE', 'N', 'NPP', 'NC', 'NOUN','ADJ' }
+        elif lang == "de":
+            self.considered_tags = {'NN', 'NNS', 'NNP', 'NNPS','NNE', 'NE', 'N', 'NPP', 'NC', 'NOUN','ADJ'}
         self.pos_tagged = []
         self.filtered_pos_tagged = []
         self.isStemmed = stem
