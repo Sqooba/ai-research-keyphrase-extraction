@@ -70,7 +70,7 @@ def _MMR(embdistrib, text_obj, candidates, X, beta, N, use_filtered, alias_thres
     return candidates[selected_candidates].tolist(), relevance_list, aliases_list
 
 
-def MMRPhrase(embdistrib, text_obj, beta=0.65, N=10, use_filtered=False, alias_threshold=0.8):
+def MMRPhrase(embdistrib, text_obj, beta=0.65, N=10, use_filtered=True, alias_threshold=0.8):
     """
     Extract N keyphrases
 
